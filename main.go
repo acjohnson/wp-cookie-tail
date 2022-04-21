@@ -60,15 +60,17 @@ func main() {
 				//log.Println("Success, cookie found: " + cookie_log)
 				cookie := strings.TrimPrefix(strings.Join(re.FindAllString(cookie_log, -1), ""), cookie_prefix)
 				//log.Println(cookie)
-				uuid := uuid.New().String()
-				key := "wp-cookie-" + uuid
-				log.Println("cookie found, setting " + key + " key in redis...")
-				set, err := rdb.SetNX(ctx, key, cookie, redis_ttl_time).Result()
-				if err != nil {
-					log.Fatal(err)
+				if len(cookie) > 40 {
+					uuid := uuid.New().String()
+					key := "wp-cookie-" + uuid
+					log.Println("cookie found, setting " + key + " key in redis...")
+					set, err := rdb.SetNX(ctx, key, cookie, redis_ttl_time).Result()
+					if err != nil {
+						log.Fatal(err)
+					}
+					log.Println(set)
+					break
 				}
-				log.Println(set)
-				break
 			}
 		}
 		err := os.Truncate(wp_log, 0)
