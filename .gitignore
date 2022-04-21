@@ -1,0 +1,5 @@
+wp-cookie-tail
+Gopkg.lock
+*.test
+*.swp
+go.sum
