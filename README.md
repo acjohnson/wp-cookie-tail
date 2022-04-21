@@ -9,5 +9,5 @@ Configure your Wordpress Apache server like this to get a response log (do not u
 </IfModule>
 ```
 
-These logs can be used with wp-cookie-tail to implement a very simple single sign on system when
+These logs will be read by wp-cookie-tail to implement a very simple single sign on system when
 used in conjunction with [wp-cookie-verify](https://github.com/acjohnson/wp-cookie-verify).
