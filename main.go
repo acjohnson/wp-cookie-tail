@@ -27,7 +27,7 @@ func main() {
 	var cookie_log string
 	cookie_prefix := "wordpress_logged_in_"
 
-	wp_log := getEnv("WP_LOG", "/tmp/wp_cookie_log")
+	wp_log := getEnv("WP_LOG", "/log/wp_cookie_log")
 	redis_host := getEnv("REDIS_HOST", "localhost")
 	redis_port := getEnv("REDIS_PORT", "6379")
 	redis_ttl, err := strconv.Atoi(getEnv("REDIS_TTL", "1209600"))
